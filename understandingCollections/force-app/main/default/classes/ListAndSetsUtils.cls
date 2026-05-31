@@ -52,4 +52,15 @@ public with sharing class List1 {
         System.debug('Lead with LeadSource: ' + LeadList);
     }
 
+
+    //use case 6: write a list to store contact phone numbers where the mailing state is 'California'.
+
+    public void useCaseSix(){
+        List<Contact> listOfPhNumbers = new List<Contact>();
+        For(Contact con: [Select Name,Phone,MailingState From Contact Where MAilingState = 'California']){
+            listOfPhNumbers.add(con.Phone);
+        }
+        System.debug('List of contact phone numbers where the mailing state is California' + listOfPhNumbers);
+        
+    }
 }
