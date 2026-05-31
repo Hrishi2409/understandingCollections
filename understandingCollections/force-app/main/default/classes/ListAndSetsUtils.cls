@@ -42,4 +42,14 @@ public with sharing class List1 {
         System.debug('Set of unique account Ids: ' + accIds);
     }
 
+    //use case 5: use a list to hold the names of leads where the lead source is 'Web'.
+
+    public void useCaseFive(){
+        List<Lead> LeadList = new List<Lead>();
+        For(Lead ld: [Select Name,LeadSource From Lead Where LeadSource = 'Web']){
+            LeadList.add(ld);
+        }
+        System.debug('Lead with LeadSource: ' + LeadList);
+    }
+
 }
