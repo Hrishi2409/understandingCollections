@@ -1,4 +1,4 @@
-public with sharing class List1 {
+public with sharing class ListAndSetsUtils {
   
     // use case 1: to store the list of accounts and display it in debug log
  public void listUseCaseOne(){
