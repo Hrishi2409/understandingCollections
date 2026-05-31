@@ -22,4 +22,14 @@ public with sharing class List1 {
         System.debug('Set of unique Email Addresses: ' + emailSet);
     }
 
+    //use case 3: build a list to hold all opportunities amounts for opportunities with an 'Open' stage.
+
+    public void useCaseThree(){
+        List<Opportunity> oppList = new list<Opportunity>();
+        For(Opportunity opp: [Select Amount From Opportunity Where StageName <> 'Closed Won' And StageName <> 'Closed Lost']){
+            oppList.add(opp);
+        }
+        System.debug('List of Open Opportunity Amounts: ' + oppList);
+    }
+
 }
