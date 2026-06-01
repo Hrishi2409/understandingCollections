@@ -63,4 +63,15 @@ public with sharing class ListAndSetsUtils {
         System.debug('List of contact phone numbers where the mailing state is California' + listOfPhNumbers);
         
     }
+
+    //use case 7: Build a set to store unique titles of contacts where the title is not null.
+
+    public void useCaseSeven(){
+        Set<String> listOfTitles = new Set<String>();
+        For(Contact con: [Select Title From Contact where Title <> null]){
+            listOfTitles.add(con.Title);
+        }
+        System.debug('Set of unique contact titles: ' + listOfTitles);
+        
+    }
 }
