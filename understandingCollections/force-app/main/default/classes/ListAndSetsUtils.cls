@@ -74,4 +74,21 @@ public with sharing class ListAndSetsUtils {
         System.debug('Set of unique contact titles: ' + listOfTitles);
         
     }
+
+    //use case 8: write a code to get the IDs of the contacts with duplicate email addresses and store them in a set.
+    // using only lists and Sets
+    public void useCaseEight(){
+        Set<Id> duplicateContactIds = new Set<Id>();
+        Set<String> emailSet = new Set<String>();
+
+        List<AggregateResult> contactsWithEmail = [Select COUNT(Id), Email From Contact Where Email <> null GROUP BY Email HAVING COUNT(Id) > 1];
+        for(AggregateResult ar: contactsWithEmail){
+            emailSet.add((String)ar.get('Email'));
+        }
+        for(Contact con: [Select Id, Email From Contact Where Email IN :emailSet]){
+            duplicateContactIds.add(con.Id);
+        }
+        System.debug('IDs of contacts with duplicate email addresses: ' + duplicateContactIds);
+        
+    }
 }
